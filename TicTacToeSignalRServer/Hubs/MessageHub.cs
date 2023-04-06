@@ -5,10 +5,9 @@ namespace TicTacToeSignalRServer.Hubs
 {
     public class MessageHub: Hub
     {
-        public async Task SendMessage(string message)
+        public async Task SendMessage(string message, string userTurn, bool ThereIsWinner)
         {
-            Debug.WriteLine("Message received at the server: " + message);
-            await Clients.All.SendAsync("ReceiveMessage", message);
+            await Clients.All.SendAsync("ReceiveMessage", message, userTurn, ThereIsWinner);
         }
     }
 }
